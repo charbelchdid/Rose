@@ -58,14 +58,14 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
     <div className="min-h-screen">
       {/* Breadcrumbs */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
-        <nav className="flex items-center gap-2 text-xs text-warm-gray">
-          <Link href="/" className="hover:text-rose transition-colors">Home</Link>
-          <span>/</span>
-          <Link href="/collections" className="hover:text-rose transition-colors">Shop</Link>
-          <span>/</span>
-          <Link href={`/collections?category=${product.category}`} className="hover:text-rose transition-colors">{product.category}</Link>
-          <span>/</span>
-          <span className="text-charcoal">{product.name}</span>
+        <nav className="flex items-center gap-2 text-xs text-warm-gray overflow-x-auto scrollbar-hide">
+          <Link href="/" className="hover:text-rose transition-colors shrink-0">Home</Link>
+          <span className="shrink-0">/</span>
+          <Link href="/collections" className="hover:text-rose transition-colors shrink-0">Shop</Link>
+          <span className="shrink-0">/</span>
+          <Link href={`/collections?category=${product.category}`} className="hover:text-rose transition-colors shrink-0">{product.category}</Link>
+          <span className="shrink-0">/</span>
+          <span className="text-charcoal truncate">{product.name}</span>
         </nav>
       </div>
 
@@ -165,30 +165,30 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
 
             {/* Quantity & Add to cart */}
             <div className="mt-8 space-y-4">
-              <div className="flex items-center gap-4">
-                <div className="flex items-center border border-blush-dark/30 rounded-full">
-                  <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="p-3 text-warm-gray hover:text-charcoal" aria-label="Decrease">
+              <div className="flex items-center gap-3">
+                <div className="flex items-center border border-blush-dark/30 rounded-full shrink-0">
+                  <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="p-2.5 sm:p-3 text-warm-gray hover:text-charcoal" aria-label="Decrease">
                     <Minus size={16} />
                   </button>
-                  <span className="w-10 text-center text-sm font-medium">{quantity}</span>
-                  <button onClick={() => setQuantity(quantity + 1)} className="p-3 text-warm-gray hover:text-charcoal" aria-label="Increase">
+                  <span className="w-8 sm:w-10 text-center text-sm font-medium">{quantity}</span>
+                  <button onClick={() => setQuantity(quantity + 1)} className="p-2.5 sm:p-3 text-warm-gray hover:text-charcoal" aria-label="Increase">
                     <Plus size={16} />
                   </button>
                 </div>
                 <button
                   onClick={handleAddToCart}
-                  className="flex-1 bg-charcoal hover:bg-charcoal/90 text-white py-4 rounded-full text-sm tracking-widest uppercase font-medium transition-all hover:shadow-lg"
+                  className="flex-1 bg-charcoal hover:bg-charcoal/90 text-white py-3.5 sm:py-4 rounded-full text-xs sm:text-sm tracking-widest uppercase font-medium transition-all hover:shadow-lg"
                 >
                   Add to Bag — ${(product.price * quantity).toFixed(2)}
                 </button>
                 <button
                   onClick={() => wishlist.toggle(product.id)}
-                  className={`w-14 h-14 rounded-full border flex items-center justify-center transition-colors ${
+                  className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full border flex items-center justify-center transition-colors shrink-0 ${
                     inWishlist ? "border-rose bg-rose-light/30 text-rose" : "border-blush-dark/30 text-charcoal hover:border-rose hover:text-rose"
                   }`}
                   aria-label="Add to wishlist"
                 >
-                  <Heart size={20} fill={inWishlist ? "currentColor" : "none"} />
+                  <Heart size={18} fill={inWishlist ? "currentColor" : "none"} />
                 </button>
               </div>
             </div>
@@ -278,7 +278,7 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
 
         {/* Related products */}
         {related.length > 0 && (
-          <div className="mt-16 md:mt-24">
+          <div className="mt-16 md:mt-24 pb-20 md:pb-0">
             <h2 className="text-2xl font-light text-charcoal mb-8">You May Also Love</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-6">
               {related.map((p) => (
@@ -287,6 +287,22 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
             </div>
           </div>
         )}
+      </div>
+
+      {/* Mobile sticky Add to Bag bar */}
+      <div className="fixed bottom-0 inset-x-0 bg-white/95 backdrop-blur-md border-t border-blush/30 p-3 z-40 md:hidden">
+        <div className="flex items-center gap-3">
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-semibold text-charcoal truncate">${product.price}</p>
+            <p className="text-[11px] text-warm-gray truncate">{product.name}</p>
+          </div>
+          <button
+            onClick={handleAddToCart}
+            className="bg-charcoal hover:bg-charcoal/90 text-white px-6 py-3 rounded-full text-xs tracking-widest uppercase font-medium transition-all shrink-0"
+          >
+            Add to Bag
+          </button>
+        </div>
       </div>
     </div>
   );

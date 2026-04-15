@@ -41,28 +41,28 @@ export function ProductCard({ product }: { product: Product }) {
             {product.badge === "sale" ? `${discount}% off` : product.badge.replace("-", " ")}
           </span>
         )}
-        {/* Quick actions overlay */}
-        <div className="absolute inset-x-0 bottom-0 p-3 flex gap-2 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+        {/* Quick actions — always visible on mobile, hover on desktop */}
+        <div className="absolute inset-x-0 bottom-0 p-2 sm:p-3 flex gap-2 sm:translate-y-full sm:group-hover:translate-y-0 transition-transform duration-300">
           <button
             onClick={(e) => {
               e.preventDefault();
               cart.addItem({ id: product.id, name: product.name, price: product.price, image: product.image });
             }}
-            className="flex-1 bg-charcoal/90 hover:bg-charcoal text-white py-2.5 rounded-full text-xs tracking-wide font-medium flex items-center justify-center gap-2 backdrop-blur-sm transition-colors"
+            className="flex-1 bg-charcoal/90 hover:bg-charcoal text-white py-2 sm:py-2.5 rounded-full text-[11px] sm:text-xs tracking-wide font-medium flex items-center justify-center gap-1.5 sm:gap-2 backdrop-blur-sm transition-colors"
           >
-            <ShoppingBag size={14} /> Add to Bag
+            <ShoppingBag size={13} /> <span className="hidden xs:inline">Add to</span> Bag
           </button>
           <button
             onClick={(e) => {
               e.preventDefault();
               wishlist.toggle(product.id);
             }}
-            className={`w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-sm transition-colors ${
+            className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center backdrop-blur-sm transition-colors shrink-0 ${
               inWishlist ? "bg-rose text-white" : "bg-white/90 hover:bg-white text-charcoal"
             }`}
             aria-label="Add to wishlist"
           >
-            <Heart size={16} fill={inWishlist ? "currentColor" : "none"} />
+            <Heart size={14} fill={inWishlist ? "currentColor" : "none"} />
           </button>
         </div>
       </Link>

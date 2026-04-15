@@ -98,17 +98,17 @@ function CollectionsContent() {
           </div>
 
           {/* Sort */}
-          <div className="relative">
+          <div className="relative shrink-0">
             <select
               value={sort}
               onChange={(e) => setSort(e.target.value)}
-              className="appearance-none bg-white border border-blush-dark/30 rounded-full px-5 py-2.5 pr-10 text-sm text-charcoal cursor-pointer focus:outline-none focus:border-rose"
+              className="appearance-none bg-white border border-blush-dark/30 rounded-full px-4 sm:px-5 py-2.5 pr-9 sm:pr-10 text-xs sm:text-sm text-charcoal cursor-pointer focus:outline-none focus:border-rose max-w-[140px] sm:max-w-none"
             >
               {SORT_OPTIONS.map((opt) => (
                 <option key={opt.value} value={opt.value}>{opt.label}</option>
               ))}
             </select>
-            <ChevronDown size={14} className="absolute right-4 top-1/2 -translate-y-1/2 text-warm-gray pointer-events-none" />
+            <ChevronDown size={14} className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 text-warm-gray pointer-events-none" />
           </div>
         </div>
 

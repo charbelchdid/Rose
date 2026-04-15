@@ -40,7 +40,7 @@ export function SearchModal() {
   return (
     <>
       <div className="fixed inset-0 bg-black/40 z-[80] animate-fade-in" onClick={close} />
-      <div className="fixed inset-x-0 top-0 z-[90] max-w-2xl mx-auto mt-20 mx-4 sm:mx-auto animate-fade-in-up">
+      <div className="fixed inset-x-4 sm:inset-x-0 top-0 z-[90] sm:max-w-2xl sm:mx-auto mt-4 sm:mt-20 animate-fade-in-up">
         <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
           <div className="flex items-center gap-3 px-5 py-4 border-b border-blush/30">
             <Search size={20} className="text-warm-gray shrink-0" />

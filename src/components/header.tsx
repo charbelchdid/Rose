@@ -34,8 +34,8 @@ export function Header() {
   return (
     <>
       {/* Promo bar */}
-      <div className="bg-charcoal text-cream text-xs text-center py-2 tracking-widest uppercase font-medium">
-        Free shipping on orders over $75 · Use code <span className="text-champagne font-semibold">WELCOME15</span> for 15% off
+      <div className="bg-charcoal text-cream text-[10px] sm:text-xs text-center py-2 px-4 tracking-wider sm:tracking-widest uppercase font-medium">
+        <span className="hidden sm:inline">Free shipping on orders over $75 · </span>Use code <span className="text-champagne font-semibold">WELCOME15</span> for 15% off
       </div>
 
       <header className="sticky top-0 z-50 bg-cream/95 backdrop-blur-md border-b border-blush-dark/20">
@@ -94,14 +94,14 @@ export function Header() {
             </nav>
 
             {/* Actions */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1 sm:gap-3">
               <button onClick={search.toggle} className="p-2 text-charcoal hover:text-rose transition-colors" aria-label="Search">
                 <Search size={20} />
               </button>
               <Link href="/account" className="p-2 text-charcoal hover:text-rose transition-colors hidden sm:block" aria-label="Account">
                 <User size={20} />
               </Link>
-              <Link href="/wishlist" className="p-2 text-charcoal hover:text-rose transition-colors relative" aria-label="Wishlist">
+              <Link href="/wishlist" className="p-2 text-charcoal hover:text-rose transition-colors relative hidden sm:block" aria-label="Wishlist">
                 <Heart size={20} />
                 {wishlist.items.length > 0 && (
                   <span className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-rose text-white text-[10px] rounded-full flex items-center justify-center font-medium">
@@ -150,6 +150,13 @@ export function Header() {
                   )}
                 </div>
               ))}
+              <Link
+                href="/wishlist"
+                className="block py-3 text-sm tracking-wide text-charcoal hover:text-rose border-b border-blush/20"
+                onClick={() => setMobileOpen(false)}
+              >
+                Wishlist
+              </Link>
               <Link
                 href="/account"
                 className="block py-3 text-sm tracking-wide text-charcoal hover:text-rose border-b border-blush/20"

@@ -18,10 +18,17 @@
   --font-mono: var(--font-geist-mono);
 }
 
+html {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   background: #FFFDF7;
   color: #2D2926;
   font-family: var(--font-sans), system-ui, sans-serif;
+  padding-bottom: env(safe-area-inset-bottom);
+  overscroll-behavior-y: none;
 }
 
 ::selection {

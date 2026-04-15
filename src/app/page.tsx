@@ -11,7 +11,7 @@ function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-blush via-rose-light/40 to-champagne/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid md:grid-cols-2 gap-8 items-center min-h-[70vh] md:min-h-[80vh] py-12 md:py-0">
+        <div className="grid md:grid-cols-2 gap-4 md:gap-8 items-center min-h-0 md:min-h-[80vh] py-10 md:py-0">
           <div className="relative z-10 text-center md:text-left">
             <span className="inline-block text-rose text-xs tracking-[0.3em] uppercase font-semibold mb-4 bg-white/60 px-4 py-1.5 rounded-full">
               New Collection 2026
@@ -45,6 +45,22 @@ function HeroSection() {
               <span className="flex items-center gap-1.5"><Truck size={14} className="text-charcoal" /> Free Shipping</span>
             </div>
           </div>
+          {/* Mobile hero image */}
+          <div className="relative md:hidden mt-4 -mx-4 sm:-mx-6">
+            <div className="relative w-full aspect-[16/10] overflow-hidden rounded-t-3xl">
+              <Image
+                src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&h=500&fit=crop&q=80"
+                alt="Beauty products"
+                fill
+                className="object-cover"
+                priority
+                sizes="100vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-blush/60 to-transparent" />
+            </div>
+          </div>
+
+          {/* Desktop hero image */}
           <div className="relative hidden md:block">
             <div className="relative w-full aspect-[3/4] max-w-lg ml-auto">
               <Image

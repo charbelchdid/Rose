@@ -68,8 +68,8 @@ export default function CheckoutPage() {
         </Link>
 
         <div className="grid lg:grid-cols-5 gap-8 md:gap-12">
-          {/* Form */}
-          <div className="lg:col-span-3">
+          {/* Form — order reversed on mobile so summary shows first */}
+          <div className="lg:col-span-3 order-2 lg:order-1">
             {/* Steps */}
             <div className="flex items-center gap-4 mb-8">
               {["info", "payment"].map((s, i) => (
@@ -110,8 +110,8 @@ export default function CheckoutPage() {
                     </div>
                     <input required placeholder="Address" className="w-full border border-blush-dark/30 rounded-xl px-4 py-3.5 text-sm bg-light-gray/30 focus:bg-white transition-colors" />
                     <input placeholder="Apartment, suite, etc. (optional)" className="w-full border border-blush-dark/30 rounded-xl px-4 py-3.5 text-sm bg-light-gray/30 focus:bg-white transition-colors" />
-                    <div className="grid grid-cols-3 gap-4">
-                      <input required placeholder="City" className="border border-blush-dark/30 rounded-xl px-4 py-3.5 text-sm bg-light-gray/30 focus:bg-white transition-colors" />
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                      <input required placeholder="City" className="col-span-2 sm:col-span-1 border border-blush-dark/30 rounded-xl px-4 py-3.5 text-sm bg-light-gray/30 focus:bg-white transition-colors" />
                       <input required placeholder="State" className="border border-blush-dark/30 rounded-xl px-4 py-3.5 text-sm bg-light-gray/30 focus:bg-white transition-colors" />
                       <input required placeholder="ZIP code" className="border border-blush-dark/30 rounded-xl px-4 py-3.5 text-sm bg-light-gray/30 focus:bg-white transition-colors" />
                     </div>
@@ -163,7 +163,7 @@ export default function CheckoutPage() {
           </div>
 
           {/* Order summary */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2 order-1 lg:order-2">
             <div className="bg-white rounded-2xl p-6 md:p-8 border border-blush/30 sticky top-28">
               <h2 className="text-lg font-medium text-charcoal mb-5">Order Summary</h2>
               <div className="space-y-4 mb-6">

@@ -41,7 +41,7 @@ export function Footer() {
               Be the first to know about new launches, exclusive offers, and beauty tips.
               Get 10% off your first order.
             </p>
-            <form className="flex gap-2 max-w-md mx-auto" onSubmit={(e) => e.preventDefault()}>
+            <form className="flex flex-col sm:flex-row gap-3 sm:gap-2 max-w-md mx-auto" onSubmit={(e) => e.preventDefault()}>
               <input
                 type="email"
                 placeholder="Your email address"
